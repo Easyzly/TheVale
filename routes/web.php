@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
+
+Route::get('home', [\App\Http\Controllers\SceneController::class, 'index'])->name('home');
+Route::get('scene/{scene}', [\App\Http\Controllers\SceneController::class, 'show'])->name('scene.show');
+
