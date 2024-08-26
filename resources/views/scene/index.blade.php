@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <main class="h-[75vh] aspect-square bg-white rounded-2xl p-12 flex flex-col gap-12 shadow drop-shadow-lg">
+    <main class="h-[75vh] aspect-square rounded-2xl p-12 font-semibold text-black/90 flex flex-col gap-12 shadow drop-shadow-lg" style="background-size: cover; background-position: center; background-image: url('{{ asset('images/map.jpg') }}');">
         <h1 class="text-5xl text-center" id="title">Title</h1>
         <h5 class="text-lg text-center mb-6" id="description">Description</h5>
         <div id="children" class="grid grid-cols-3 gap-4"></div>
@@ -20,7 +20,7 @@
 
             data.children.forEach((scene) => {
                 let child = document.createElement('button')
-                child.classList.add('aspect-square', 'rounded-2xl', 'text-xl', 'bg-slate-50')
+                child.classList.add('aspect-square', 'rounded-2xl', 'text-xl', 'backdrop-blur-3xl')
                 child.textContent = scene.button
 
                 child.addEventListener('click', function (e) {
@@ -33,7 +33,7 @@
 
             if(data.redirect){
                 let child = document.createElement('button')
-                child.classList.add('aspect-square', 'rounded-2xl', 'text-xl', 'bg-slate-50')
+                child.classList.add('aspect-square', 'rounded-2xl', 'text-xl', 'backdrop-blur-3xl')
                 child.textContent = data.scene.button_redirect
 
                 child.addEventListener('click', function (e) {

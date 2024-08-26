@@ -152,7 +152,7 @@ class DatabaseSeeder extends Seeder
             'button' => 'attack the Moon Door',
             'parent_id' => $scene9a->id,
             'redirect_id' => $scene4->id, // Redirect to Moon Door scene
-            'button_redirect' => 'Return to the Moon Door',
+            'button_redirect' => 'Face your sentence',
         ]);
 
 // Scene 11: Endings based on Loyalty

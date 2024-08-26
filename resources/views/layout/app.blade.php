@@ -3,7 +3,9 @@
 <head>
     @include('layout.head')
 </head>
-<body class="bg-slate-100 grid h-screen place-items-center">
-    @yield('content')
+<body style="background-size: cover; background-position: center; background-image: url('{{ asset('images/vale.jpg') }}');">
+    <div class="backdrop-blur-lg grid h-screen place-items-center">
+        @yield('content')
+    </div>
 </body>
 </html>
