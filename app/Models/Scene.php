@@ -12,12 +12,13 @@ class Scene extends Model
     use HasFactory;
 
     protected $fillable = [
-      'title',
-      'description',
-      'button',
-      'parent_id',
-      'redirect_id',
-      'button_redirect'
+        'title',
+        'description',
+        'button',
+        'parent_id',
+        'redirect_id',
+        'button_redirect',
+        'help',
     ];
 
     //The connected father of the scene/route

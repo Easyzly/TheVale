@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('redirect_id')->nullable();
             $table->foreign('redirect_id')->references('id')->on('scenes');
             $table->string('button_redirect')->nullable();
+            $table->text('help')->nullable();
             $table->timestamps();
         });
     }

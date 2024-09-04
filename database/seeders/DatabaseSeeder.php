@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Waking Up',
             'description' => 'You wake up early in the morning, the sun shining through your window. Today is the day of the grand celebration at the castle.',
             'button' => 'Go to the Castle',
+            'help' => 'Either option leads to a different path to adventure'
         ]);
 
         $scene1a = Scene::create([
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Instead of going to the castle, you decide to visit the city/town. The streets are bustling with activity.',
             'button' => 'Go to the City/Town',
             'parent_id' => $scene1->id,
+            'help' => 'Working from 9 to 5 will never bring you anywhere so consider your choice'
         ]);
 
         // Castle Path
@@ -35,6 +37,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'You arrive at the castle, where the celebration is in full swing. The air is filled with laughter, music, and the smell of roasted meats.',
             'button' => 'Enter the Castle',
             'parent_id' => $scene1->id,
+            'help' => 'You should enter the great hall'
         ]);
 
         $scene3 = Scene::create([
@@ -42,6 +45,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'As you explore the castle, you suddenly notice a thief about to attack Lady Lyca. You have a split second to decide what to do.',
             'button' => 'Enter the great hall',
             'parent_id' => $scene2->id,
+            'help' => 'Walk the path of a knight or seek your opportunities right'
         ]);
 
         $scene3a = Scene::create([
@@ -102,7 +106,7 @@ class DatabaseSeeder extends Seeder
         $scene3c = Scene::create([
             'title' => 'Confront the Thief',
             'description' => 'You decide to confront the thief. A fight breaks out, and you emerge victorious, earning the respect of the townsfolk. You are later knighted for your bravery.',
-            'button' => 'Embrace Your Knighthood',
+            'button' => 'Arrest the thief',
             'parent_id' => $scene2a->id,
         ]);
 
@@ -111,13 +115,16 @@ class DatabaseSeeder extends Seeder
             'description' => 'You talk to the thief and learn of his plan to kill Lady Lyca at the castle. You decide to join him.',
             'button' => 'Join the Thief',
             'parent_id' => $scene2a->id,
+            'redirect_id' => $scene3->id,
+            'button_redirect' => 'Enter the hall',
+            'help' => 'Either option leads to a different path to adventure'
         ]);
 
         // Outcomes from Talking to the Thief
         $scene4a = Scene::create([
-            'title' => 'Assassinate Lady Lyca',
-            'description' => 'You and the thief successfully carry out the assassination of Lady Lyca. With her out of the way, you claim the throne and become king.',
-            'button' => 'Rule as King',
+            'title' => 'Save lyca',
+            'description' => 'You and snitch on the thief and become a knight of the vale',
+            'button' => 'Snitch on the thief',
             'parent_id' => $scene3d->id,
         ]);
     }

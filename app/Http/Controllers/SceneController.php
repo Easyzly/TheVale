@@ -19,6 +19,7 @@ class SceneController extends Controller
 
         $data = [
             'scene' => $scene,
+            'help' => $scene->help ?? 'your fate is sealed pick the option you want',
             'children' => $children ?? null,
             'redirect' => $redirect ?? null
         ];

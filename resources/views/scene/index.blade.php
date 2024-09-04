@@ -3,7 +3,11 @@
 @section('content')
     <main class="h-[75vh] aspect-square rounded-2xl p-12 font-semibold text-black/90 flex flex-col gap-12 shadow drop-shadow-lg" style="background-size: cover; background-position: center; background-image: url('{{ asset('images/map.jpg') }}');">
         <h1 class="text-5xl text-center" id="title">The Vale</h1>
-        <h5 class="text-lg text-center mb-6" id="description">Start the adventure of becomming a knight, king or lord.</h5>
+        <h5 class="text-lg text-center" id="description">Start the adventure of becomming a knight, king or lord.</h5>
+        <div id="tooltipbox" class="tooltip text-center mb-6">Hover over me for a hint
+            <span id="tooltiptext" class="tooltiptext"></span>
+        </div>
+
         <div id="children" class="grid grid-cols-3 gap-4"></div>
         <p class="flex-grow"></p>
         <div class="grid grid-cols-3 gap-4">
@@ -17,6 +21,8 @@
         let title = document.getElementById('title');
         let description = document.getElementById('description')
         let children = document.getElementById('children')
+        let hintText = document.getElementById('tooltiptext')
+        let hintBox = document.getElementById('tooltipbox')
         let sceneVar = 1;
 
         document.getElementById('saveStory').addEventListener('click', function (e) {
@@ -60,6 +66,7 @@
         function mainMenu(){
             title.textContent = 'The Vale';
             description.textContent = 'Start the adventure of becomming a knight, king or lord.';
+            hintBox.style.visibility = "hidden"
 
             children.textContent = '';
 
@@ -84,6 +91,7 @@
 
         function helpMenu(){
             children.textContent = '';
+            hintBox.style.visibility = "hidden"
 
             let helpButton = document.createElement('button')
             helpButton.textContent = 'Main menu';
@@ -116,6 +124,7 @@
             children.textContent = '';
             title.textContent = data.scene.title
             description.textContent = data.scene.description
+            hintText.textContent = data.help
 
             data.children.forEach((scene) => {
                 let child = document.createElement('button')
@@ -165,6 +174,7 @@
                 'method': "GET",
                 'contentType': 'application/json'
             }).done(function(data) {
+                hintBox.style.visibility = "visible"
                 sceneVar = scene;
                 displayData(data)
             });
